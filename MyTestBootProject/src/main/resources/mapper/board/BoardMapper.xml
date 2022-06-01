@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	
+<mapper namespace="com.mycom.myapp.board.repository.BoardMapper">
+
+	<select id="getBoardList" resultType="com.mycom.myapp.board.dto.BoardDTO">
+		SELECT ID,
+			TITLE,
+			CONTENTS,
+			CNT,
+			REGID,
+			REGDT,
+			MODDT,
+			LOVE
+		FROM TB_BOARD
+<!-- 		WHERE DOCSTTCD != 'D' -->
+	</select>
+
+</mapper>
