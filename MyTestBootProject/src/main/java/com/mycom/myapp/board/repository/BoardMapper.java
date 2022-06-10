@@ -13,4 +13,6 @@ public interface BoardMapper {
 	public List<BoardDTO> getBoardList();
 	
 	public void insertBoard(@Param("param") BoardDTO dto);
+	
+	public void updateBoardCnt(Integer id);
 }

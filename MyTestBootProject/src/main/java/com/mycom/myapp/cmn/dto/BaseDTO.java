@@ -2,9 +2,12 @@ package com.mycom.myapp.cmn.dto;
 
 import java.util.Date;
 
+import javax.persistence.MappedSuperclass;
+
 import lombok.Data;
 
 @Data
+@MappedSuperclass
 public class BaseDTO {
 
 	/* 작성자 */

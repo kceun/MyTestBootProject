@@ -1,39 +1,46 @@
 <!DOCTYPE HTML>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>게시판</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<title>게시판</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
 		<h2>게시글 상세보기</h2>
-		
-		<div id='boardDiv'>
-			<span>이름 : </span> <input id='name' disabled/>
-			<br/>
-			<span>제목 : </span> <input id='title' style="width:450px" disabled/> 
-			<br/>
-			<span>내용 : </span> <br/>
-			<textarea id='contents' style="width:500px;height:150px" disabled></textarea>
-			
+
+		<div>
+			<button id='btnList'>목록보기</button>
 		</div>
-		
+
+		<div id='boardDiv'>
+			<span>글 번호 : </span> <input id='id' th:value="${dto.id}" disabled /> <br/>
+			<span>이름 : </span> <input id='name' th:value="${dto.regid}" disabled />
+			<br /> <span>제목 : </span> <input id='title' th:value="${dto.title}"
+				style="width: 450px" disabled /> <br /> <span>내용 : </span> <br />
+			<textarea id='contents' th:text="${dto.contents}"
+				style="width: 500px; height: 150px" disabled></textarea>
+
+		</div>
+
+
 		<div>
 			<button id='btnModify'>수정하기</button>
 			<button id='btnDelete'>삭제하기</button>
 		</div>
-		
+
 	</div>
 
 
 
-<script src="http://code.jquery.com/jquery-latest.js"></script> <!--  실행순서에 의해 먼저 추가해야한다. -->
-<script th:inline="javascript">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!--  실행순서에 의해 먼저 추가해야한다. -->
+	<script th:inline="javascript">
 	var dto = [[${dto}]];
 </script>
-<script th:inline="javascript" th:src="@{/board/board-detail.js}"></script>
+	<script th:inline="javascript" th:src="@{/board/board-detail.js}"></script>
 
 </body>
 </html>

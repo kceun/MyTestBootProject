@@ -2,27 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-	
+
 <mapper namespace="com.mycom.myapp.board.repository.BoardMapper">
 
-	<select id="getBoardList" resultType="com.mycom.myapp.board.dto.BoardDTO">
+	<select id="getBoardList"
+		resultType="com.mycom.myapp.board.dto.BoardDTO">
 		SELECT ID,
-			TITLE,
-			CONTENTS,
-			CNT,
-			REGID,
-			REGDT,
-			MODDT,
-			LOVE
+		TITLE,
+		CONTENTS,
+		CNT,
+		REGID,
+		REGDT,
+		MODDT,
+		LOVE
 		FROM TB_BOARD
 		WHERE DOCSTTCD != 'D'
 		ORDER BY ID DESC
 	</select>
 
-	<insert id="insertBoard" parameterType="com.mycom.myapp.board.dto.BoardDTO">
-	INSERT INTO TB_BOARD (ID, TITLE, CONTENTS, DOCSTTCD, CNT, REGID, REGDT, PWD, LOVE, SALT)
-	VALUES (board_id_seq.nextval, #{param.title}, #{param.contents}, 'C', 0, #{param.regid}, sysdate, #{param.pwd},0, #{param.salt})
+	<insert id="insertBoard"
+		parameterType="com.mycom.myapp.board.dto.BoardDTO">
+		INSERT INTO TB_BOARD (ID, TITLE, CONTENTS, DOCSTTCD, CNT, REGID, REGDT, PWD,
+		LOVE, SALT)
+		VALUES (board_id_seq.nextval, #{param.title}, #{param.contents}, 'C', 0,
+		#{param.regid}, sysdate, #{param.pwd},0, #{param.salt})
 	</insert>
+
+
+	<update id="updateBoardCnt">
+		UPDATE TB_BOARD
+		SET CNT = CNT+1
+		WHERE ID = #{id}
+	</update>
+
 
 
 </mapper>

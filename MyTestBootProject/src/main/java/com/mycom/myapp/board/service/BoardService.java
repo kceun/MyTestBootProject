@@ -28,10 +28,11 @@ public class BoardService {
 	}
 	
 	public BoardDTO getBoardById(Integer id) {
-		BoardDTO dto = null;
-		Optional<BoardDTO> op = boardRepository.findById(id);
-		if(op.isPresent())
-			dto = op.get();
+		//조회수 ++
+		boardMapper.updateBoardCnt(id);
+		
+		//가져오기
+		BoardDTO dto = boardRepository.findById(id).orElse(null);
 		return dto;
 	}
 	
