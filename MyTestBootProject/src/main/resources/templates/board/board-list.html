@@ -29,7 +29,8 @@
 			<tbody>
 				<tr th:if="${boardList.size()} > 0" th:each="list : ${boardList}">
 					<td th:text="${list.id}"></td>
-					<td th:text="${list.title}"></td>
+<!-- 					<td><a th:text="${list.title}" th:href="@{/detail(id=${list.id})}"></a></td> -->
+					<td><a th:text="${list.title}" th:href="@{|board/detail/${list.id}|}"></a></td>
 					<td th:text="${list.cnt}"></td>
 					<td th:text="${list.regid}"></td>
 					<td th:text="${#dates.format(list.regdt,'yyyy-MM-dd')}"></td>
@@ -39,7 +40,14 @@
 <!-- 				</tr> -->
 			</tbody>
 		</table>
+		<div>
+			<button id='btnWrite'>글쓰기</button>
+		</div>
 	</div>
 
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script> <!--  실행순서에 의해 먼저 추가해야한다. -->
+<script th:inline="javascript" th:src="@{/board/board-list.js}"></script>
 </body>
 </html>
