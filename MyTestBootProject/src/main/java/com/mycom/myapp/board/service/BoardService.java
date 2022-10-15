@@ -59,6 +59,9 @@ public class BoardService {
 		return res;
 	}
 	
+	public void updateBoard(BoardDTO dto) {
+		boardMapper.updateBoard(dto);
+	}
 	//====================================================================
 	
 	public String checkPwd(Integer id, String pwd) {

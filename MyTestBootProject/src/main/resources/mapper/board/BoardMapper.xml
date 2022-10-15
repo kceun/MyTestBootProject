@@ -35,11 +35,17 @@
 		WHERE ID = #{id}
 	</update>
 
+	<update id="updateBoard">
+		UPDATE TB_BOARD
+		SET TITLE = #{param.title}, CONTENTS = #{param.contents}, MODDT = SYSDATE
+		WHERE ID = #{param.id}
+	</update>
 
 	<update id="deleteBoard">
 		UPDATE TB_BOARD
 		SET DOCSTTCD = 'D'
 		WHERE ID = #{id} 
 	</update>
+	
 
 </mapper>

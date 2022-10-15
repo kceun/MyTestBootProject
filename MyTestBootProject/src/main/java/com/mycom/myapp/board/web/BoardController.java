@@ -57,4 +57,16 @@ public class BoardController {
 	public String deleteBoard(BoardDTO dto){
 		return boardService.deleteBoard(dto);
 	}
+	
+	@GetMapping("board/chkpwd")
+	@ResponseBody
+	public String checkPwd(BoardDTO dto) {
+		return boardService.checkPwd(dto.getId(), dto.getPwd());
+	}
+	
+	@PostMapping("board/update")
+	@ResponseBody
+	public void updateBoard(BoardDTO dto) {
+		boardService.updateBoard(dto);
+	}
 }
