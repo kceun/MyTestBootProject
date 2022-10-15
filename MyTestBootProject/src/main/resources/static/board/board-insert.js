@@ -20,16 +20,20 @@ $(this).ready(function(){ //$('document').ready(function(){
 			async : true,
 			type : 'POST',
 			data : params,
-			dataType: 'json',
+//			dataType: 'json',
 			success : function(res){
-				if(res == null)
-					return;
+				console.log(res);
+//				if(res == null)
+//					return;
 				
-				location.replace('./');
+//				location.replace('./');
+				location.href = '/board';
 				
+			},
+			error : function() {
+				console.log('error..');
 			}
 		});
-		
 	});
 	
 	

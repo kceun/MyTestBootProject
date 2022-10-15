@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycom.myapp.board.dto.BoardDTO;
@@ -17,7 +18,7 @@ public class BoardController {
 	BoardService boardService;
 	
 	// VIEW ========================================================================
-	@GetMapping("/board")
+	@GetMapping("board")
 	public ModelAndView boardList() {
 		ModelAndView model = new ModelAndView();
 		model.addObject("boardList", boardService.getBoardList());
@@ -26,7 +27,7 @@ public class BoardController {
 		return model;
 	}
 	
-	@GetMapping("/board/insert")
+	@GetMapping("board/insert")
 	public ModelAndView boardInsert() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("board/board-insert");
@@ -34,7 +35,7 @@ public class BoardController {
 		return model;
 	}
 	
-	@GetMapping("/board/detail/{id}")
+	@GetMapping("board/detail/{id}")
 	public ModelAndView boardDetail(@PathVariable Integer id ) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("dto",boardService.getBoardById(id));
@@ -45,7 +46,8 @@ public class BoardController {
 	
 	
 	// API ========================================================================
-	@PostMapping("/board/insert")
+	@PostMapping("board/insert")
+	@ResponseBody
 	public void getBoardList(BoardDTO dto){
 		boardService.insertBoard(dto);
 	}
