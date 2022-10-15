@@ -44,6 +44,36 @@ public class BoardService {
 		dto.setSalt(salt);
 		
 		boardMapper.insertBoard(dto);
-	};
+	}
+	
+	public String deleteBoard(BoardDTO dto) {
+		
+		// 비밀번호 맞는지 체크
+		String res = this.checkPwd(dto.getId(), dto.getPwd());
+		
+		if(res.equals("pwdError"))
+			return res;
+		
+		boardMapper.deleteBoard(dto.getId());
+		
+		return res;
+	}
+	
+	//====================================================================
+	
+	public String checkPwd(Integer id, String pwd) {
+		
+		BoardDTO dto = boardRepository.findById(id).orElse(null);
+		String salt = dto.getSalt();
+		String inputPwd = cmnService.getEncrypt(pwd, salt);
+		
+		if(inputPwd.equals(dto.getPwd())) {
+			return "Success";
+		} else {
+			return "pwdError";
+		}
+		
+	}
+	
 	
 }

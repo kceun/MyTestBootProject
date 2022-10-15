@@ -51,4 +51,10 @@ public class BoardController {
 	public void getBoardList(BoardDTO dto){
 		boardService.insertBoard(dto);
 	}
+	
+	@PostMapping("board/delete")
+	@ResponseBody
+	public String deleteBoard(BoardDTO dto){
+		return boardService.deleteBoard(dto);
+	}
 }

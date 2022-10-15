@@ -36,5 +36,10 @@
 	</update>
 
 
+	<update id="deleteBoard">
+		UPDATE TB_BOARD
+		SET DOCSTTCD = 'D'
+		WHERE ID = #{id} 
+	</update>
 
 </mapper>

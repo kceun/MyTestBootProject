@@ -15,4 +15,6 @@ public interface BoardMapper {
 	public void insertBoard(@Param("param") BoardDTO dto);
 	
 	public void updateBoardCnt(Integer id);
+	
+	public void deleteBoard(Integer id);
 }
